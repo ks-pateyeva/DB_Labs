@@ -40,6 +40,6 @@ SELECT
 FROM [HumanResources].[Employee]
 
 WHERE 
-	YEAR([HireDate]) - YEAR([BirthDate]) = 18;
+	DATEDIFF(YEAR, BirthDate, HireDate) = 18;
 
 GO
