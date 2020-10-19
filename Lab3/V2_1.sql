@@ -4,15 +4,15 @@ USE [AdventureWorks2012];
 
 GO
 
---a) добавить в таблицу dbo.PersonPhone поле HireDate типа date;
+--a) РґРѕР±Р°РІРёС‚СЊ РІ С‚Р°Р±Р»РёС†Сѓ dbo.PersonPhone РїРѕР»Рµ HireDate С‚РёРїР° date;
 
 ALTER TABLE dbo.PersonPhone
 ADD [HireDate] DATE;
 
 GO
 
---b) объявить табличную переменную с такой же структурой как dbo.PersonPhone и заполнить ее данными из dbo.PersonPhone.
---Заполнить поле HireDate значениями из поля HireDate таблицы HumanResources.Employee;
+--b) РѕР±СЉСЏРІРёС‚СЊ С‚Р°Р±Р»РёС‡РЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃ С‚Р°РєРѕР№ Р¶Рµ СЃС‚СЂСѓРєС‚СѓСЂРѕР№ РєР°Рє dbo.PersonPhone Рё Р·Р°РїРѕР»РЅРёС‚СЊ РµРµ РґР°РЅРЅС‹РјРё РёР· dbo.PersonPhone.
+--Р—Р°РїРѕР»РЅРёС‚СЊ РїРѕР»Рµ HireDate Р·РЅР°С‡РµРЅРёСЏРјРё РёР· РїРѕР»СЏ HireDate С‚Р°Р±Р»РёС†С‹ HumanResources.Employee;
 
 DECLARE @PersonPhoneCopy TABLE (
 	[BusinessEntityID] INT NOT NULL,
@@ -37,7 +37,7 @@ INSERT INTO @PersonPhoneCopy
 
 --SELECT * FROM @PersonPhoneCopy;
 
---c) обновить HireDate в dbo.PersonPhone данными из табличной переменной, добавив к HireDate один день;
+--c) РѕР±РЅРѕРІРёС‚СЊ HireDate РІ dbo.PersonPhone РґР°РЅРЅС‹РјРё РёР· С‚Р°Р±Р»РёС‡РЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№, РґРѕР±Р°РІРёРІ Рє HireDate РѕРґРёРЅ РґРµРЅСЊ;
 
 UPDATE dbo.PersonPhone
 SET dbo.PersonPhone.[HireDate] = DATEADD(DAY, 1, ppc.[HireDate])
@@ -49,7 +49,7 @@ SELECT * FROM dbo.PersonPhone;
 
 GO
 
---d) удалить данные из dbo.PersonPhone, для тех сотрудников, у которых почасовая ставка в таблице HumanResources.EmployeePayHistory больше 50;
+--d) СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Рµ РёР· dbo.PersonPhone, РґР»СЏ С‚РµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ, Сѓ РєРѕС‚РѕСЂС‹С… РїРѕС‡Р°СЃРѕРІР°СЏ СЃС‚Р°РІРєР° РІ С‚Р°Р±Р»РёС†Рµ HumanResources.EmployeePayHistory Р±РѕР»СЊС€Рµ 50;
 
 DELETE FROM dbo.PersonPhone
 WHERE EXISTS (
@@ -71,8 +71,8 @@ WHERE EXISTS (
 
 GO
 
---e) удалить все созданные ограничения и значения по умолчанию. После этого, удалить поле ID.
---Имена ограничений можно найти в метаданных. Имена значений по умолчанию найти самостоятельно, привести код, которым пользовались для поиска;
+--e) СѓРґР°Р»РёС‚СЊ РІСЃРµ СЃРѕР·РґР°РЅРЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ Рё Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ. РџРѕСЃР»Рµ СЌС‚РѕРіРѕ, СѓРґР°Р»РёС‚СЊ РїРѕР»Рµ ID.
+--РРјРµРЅР° РѕРіСЂР°РЅРёС‡РµРЅРёР№ РјРѕР¶РЅРѕ РЅР°Р№С‚Рё РІ РјРµС‚Р°РґР°РЅРЅС‹С…. РРјРµРЅР° Р·РЅР°С‡РµРЅРёР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅР°Р№С‚Рё СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ, РїСЂРёРІРµСЃС‚Рё РєРѕРґ, РєРѕС‚РѕСЂС‹Рј РїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ РґР»СЏ РїРѕРёСЃРєР°;
 
 
 SELECT * FROM INFORMATION_SCHEMA.CONSTRAINT_TABLE_USAGE
@@ -99,7 +99,7 @@ DROP COLUMN [ID];
 
 GO
 
---f) удалите таблицу dbo.PersonPhone
+--f) СѓРґР°Р»РёС‚Рµ С‚Р°Р±Р»РёС†Сѓ dbo.PersonPhone
 
 DROP TABLE dbo.PersonPhone;
 
